@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContentPageComponent } from './components/content-page/content-page.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { WeatherComponent } from './components/weather/weather.component';
     AboutComponent,
     ContentPageComponent,
     WeatherComponent,
+    SearchBarComponent,
   
   ],
   imports: [

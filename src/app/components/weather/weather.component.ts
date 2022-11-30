@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { CityWeatherService } from 'src/app/city-weather.service';
+import { Weather } from 'src/app/waether';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent {
+  cities:Weather[] = [];
 
-  constructor() { }
+  constructor(private weatherService: CityWeatherService) { }
 
-  ngOnInit(): void {
+  public searchCityWeatherComponent(query:string):void{
+    let response = this.weatherService.searchCity(query);
+    this.cities=response;
   }
+
+
 
 }
