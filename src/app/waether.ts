@@ -1,5 +1,6 @@
 export interface Weather{
-    "city-name":string,
+    "city":string,
     "country":string,
-    "icon":string
+    "temp":string,
+    "cond":string
 }

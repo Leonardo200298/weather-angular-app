@@ -1,2 +1,9 @@
-<h1>Search city</h1>
 <app-search-bar (submitQuery)="searchCityWeatherComponent($event)"></app-search-bar>
+<div *ngIf="this.cities.city !=''">
+    <ul>
+        <li>City: {{this.cities.city}}</li>
+        <li>Country: {{this.cities.country}}</li>
+        <li>temp: {{this.cities.temp}} C°</li>
+        <li>Condition: {{this.cities.cond}}</li>
+    </ul>
+</div>

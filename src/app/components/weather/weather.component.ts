@@ -8,13 +8,27 @@ import { Weather } from 'src/app/waether';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent {
-  cities:Weather[] = [];
+  cities:Weather = {
+    "city":"",
+    "country":"",
+    "temp":"",
+    "cond":""
+  };
 
   constructor(private weatherService: CityWeatherService) { }
-
+  
   public searchCityWeatherComponent(query:string):void{
+   
     let response = this.weatherService.searchCity(query);
-    this.cities=response;
+    response.subscribe((cities:any)=>{
+      console.log(cities);
+      this.cities = {
+        "city":cities.location.name,
+        "country":cities.location.country,
+        "temp":cities.current.temp_c,
+        "cond":cities.current.condition.text
+      };
+    });
   }
 
 

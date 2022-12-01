@@ -2,6 +2,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Weather } from './waether';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +15,9 @@ export class CityWeatherService {
 
   constructor(private http: HttpClient) { }
 
-  public searchCity(query: string): Weather[] | any {
+  public searchCity(query: string):Observable<Weather[]> {
     const request = this.http.get<Weather[]>((this.apiWeather + this.key + `&q=+${query}`));
-    let cities: Weather[] = [];
-    request.subscribe((citiesCopy: Weather[] | any) => {
-      citiesCopy.map((elem: Weather | any) => {
-        return cities.push({
-          'city-name': elem.location.name,
-          'country': elem.location.country,
-          'icon': elem.current.condition.icon
-        });
-      })
-    })
-    return cities;
+  
+    return request;
   }
 }
